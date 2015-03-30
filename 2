@@ -121,23 +121,15 @@ Application.DisplayAlerts = True
 ActiveWorkbook.RemovePersonalInformation = False
 '不提示删除个人隐私信息
 
-Dim x$
-x = "\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\Value version\" & Range("B2") & ".xlsm"
-
 ActiveWorkbook.SaveAs Filename:= _
-"\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\Value version\" & Range("B2") & ".xlsm" _
+"\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\Value version\" & Range("B2") & ".xls" _
 , FileFormat:=xlOpenXMLWorkbookMacroEnabled, CreateBackup:=False
+ThisWorkbook.Close
 
-
-
-Windows(x).Activate
-
-ActiveWindow.Close
+'ActiveWindow.Close
 
 Workbooks.Open "\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\1songlin - new version2.xlsm"
 
 Next i
 End Sub
-
-
 
