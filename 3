@@ -1,0 +1,141 @@
+Sub Macro2()
+'
+
+'
+' 快捷键: Ctrl+o
+'
+'
+Windows("1songlin - new version2.xlsm").Activate
+For i = 1 To 50
+
+Application.DisplayAlerts = False
+'删除数据不提示
+
+
+Sheets("Sheet1").Select
+Range("A" & i).Select
+Selection.Copy
+
+
+
+If Range("D" & i).Value = "BJ" Then
+
+Sheets("Payroll slip BJ").Select
+Range("C4").Select
+ActiveSheet.Paste
+Range("A1:AI15").Select
+Range("C4").Activate
+Application.CutCopyMode = False
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+:=False, Transpose:=False
+
+Columns.AutoFit
+'自动适应列宽
+
+Sheets("Sheet1").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip NJ").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip Yuege").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip BJ").Select
+
+ChDir _
+"\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\Value version"
+'删除Sheet1,Payroll slip NJ, Payroll slip Yuege
+
+
+ElseIf Range("D" & i).Value = "NJ" Then
+
+
+Sheets("Payroll slip NJ").Select
+Range("C4").Select
+ActiveSheet.Paste
+Range("A1:AI15").Select
+Range("C4").Activate
+Application.CutCopyMode = False
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+:=False, Transpose:=False
+
+Columns.AutoFit
+'自动适应列宽
+
+Sheets("Sheet1").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip BJ").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip Yuege").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip NJ").Select
+
+ChDir _
+"\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\Value version"
+'删除Sheet1,Payroll slip BJ
+
+ElseIf Range("D" & i).Value = "YG" Then
+
+
+Sheets("Payroll slip Yuege").Select
+Range("C4").Select
+ActiveSheet.Paste
+Range("A1:AI15").Select
+Range("C4").Activate
+Application.CutCopyMode = False
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+:=False, Transpose:=False
+
+Columns.AutoFit
+'自动适应列宽
+
+Sheets("Sheet1").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip BJ").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip NJ").Select
+Application.CutCopyMode = False
+ActiveWindow.SelectedSheets.Delete
+Sheets("Payroll slip Yuege").Select
+
+ChDir _
+"\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\Value version"
+'删除Sheet1,Payroll slip BJ, Payroll slip NJ
+Else
+
+
+
+End If
+
+Application.DisplayAlerts = True
+'删除数据不提示
+ActiveWorkbook.RemovePersonalInformation = False
+'不提示删除个人隐私信息
+
+Dim x As String
+x = Range("B2") & ".xlsm"
+
+ActiveWorkbook.SaveAs Filename:= _
+"\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\Value version\" & Range("B2") & ".xlsm" _
+, FileFormat:=xlOpenXMLWorkbookMacroEnabled, CreateBackup:=False
+
+MsgBox x
+Workbooks.Open "\\10.90.5.108\limited\Hr\Payroll\SALARY\2015\2015 Employee Salary Slip\1songlin - new version2.xlsm"
+Windows(x).Close
+'ActiveWindow.Close
+
+
+
+
+Next i
+End Sub
+
